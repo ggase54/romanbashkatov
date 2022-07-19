@@ -1,8 +1,7 @@
 {% extends "index.html" %}
 
 {% block content %}
-    <h1>Detail Post</h1>
-    <strong>{{ post.title }}</strong>
+    <h1>Пост: <strong>{{ post.title }}</strong></h1>
     <p>{{ post.description }}</p>
     <p>{{ post.created_at|date:'DATE_FORMAT' }}</p>
     {% if post.image %}
@@ -10,12 +9,12 @@
         <img src="{{ post.image.url }}" width="800">
         <hr>
     {% endif %}
-    <a href="{% url 'update_post' post.pk%}" class="btn btn-primary">Edit</a>
-    <a href="{% url 'delete_post' post.pk%}" class="btn btn-danger">Delete</a>
-    <a href="{% url 'add_comment' post.pk%}" class="btn btn-info">Add comment</a>
+    <a href="{% url 'update_post' post.pk%}" class="btn btn-primary">Изменить</a>
+    <a href="{% url 'delete_post' post.pk%}" class="btn btn-danger">Удалить</a>
+    <a href="{% url 'add_comment' post.pk%}" class="btn btn-info">Добавить Комментарий</a>
     {% if post.comments.all %}
     <hr>
-    <h2>Comments</h2>
+    <h2>Комментарии</h2>
         {% for comment in post.comments.all %}
             <p>{{comment.description}} - {{comment.created_at}}</p>
         {% endfor %}
