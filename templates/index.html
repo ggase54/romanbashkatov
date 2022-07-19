@@ -15,31 +15,31 @@
         <div class="container">
             {% block content %}
                 <h1>Forum</h1>
-                <a href="#" class="btn btn-primary btn-block">Creare New Post</a>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Title</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Created At</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% if object_list %}
-                            {% for post in object_list %}
+                <a href="{% url 'create_post' %}" class="btn btn-primary btn-block">Creare New Post</a>
+                {% if object_list %}
+                    {% for post in object_list %}
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Created At</th>
+                                    <th scope="col">Edit</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
                                 <tr>
                                     <td>
                                         <a href="{% url 'detail_post' post.pk%}">{{ post.title }}</a>
                                     </td>
-                                    <th scope="row">{{ post.description }}</th>
-                                    <td>{{ post.created_at }}</td>
+                                    <td scope="row">{{ post.description }}</td>
+                                    <td>{{ post.created_at|date:'DATE_FORMAT' }}</td>
                                     <td>
-                                        <a href="#" class="btn btn-primary">Edit</a>
+                                        <a href="{% url 'update_post' post.pk%}" class="btn btn-primary">Edit</a>
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-danger">Delete</a>
+                                        <a href="{% url 'delete_post' post.pk%}" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -48,7 +48,7 @@
                         {% endif %}
                     </tbody>
                 </table>
-            {% endblock content %}
+            {% endblock %}
         </div>
     </body>
     <script
