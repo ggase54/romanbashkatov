@@ -1,9 +1,12 @@
 {% extends "index.html" %}
 
 {% block content %}
-    <h1>Пост: <strong>{{ post.title }}</strong></h1>
-    <p>{{ post.description }}</p>
-    <p>{{ post.created_at|date:'DATE_FORMAT' }}</p>
+    <h1>Пост: <em>{{ post.title }}</em></h1>
+    <p>Описание: {{ post.description }}</p>
+    <p>Создано: {{ post.created_at|date:'DATE_FORMAT' }}</p>
+    {% if post.updated_at %}
+    <p>Обновлено: {{ post.updated_at|date:'DATE_FORMAT' }}</p>
+    {% endif %}
     {% if post.image %}
         <hr>
         <img src="{{ post.image.url }}" width="800">
@@ -15,9 +18,8 @@
     {% if post.comments.all %}
     <hr>
     <h2>Комментарии</h2>
-        {% for comment in post.comments.all %}
-            <p>{{comment.description}} - {{comment.created_at}}</p>
+        {% for comment in post.comments.all %}<br>
+            <p>{{comment.description}} - {{comment.created_at}}</p><hr>
         {% endfor %}
-    <hr>
     {% endif %}
 {% endblock content %}

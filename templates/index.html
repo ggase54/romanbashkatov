@@ -16,20 +16,20 @@
             {% block content %}
                 <h1>Forum</h1>
                 <div class="card card-block">
-                    <a href="{% url 'create_post' %}" class="btn btn-primary btn-sm btn-block">Добавить Новый Пост</a>
+                <a href="{% url 'create_post' %}" class="btn btn-primary btn-sm btn-block">Добавить Новый Пост</a>
                     {% if object_list %}
-                        {% for post in object_list %}
                             <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Название</th>
-                                        <th scope="col">Описание</th>
-                                        <th scope="col">Создано</th>
-                                        <th scope="col">Изменить</th>
-                                        <th scope="col">Удалить</th>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Название</th>
+                                            <th scope="col">Описание</th>
+                                            <th scope="col">Создано</th>
+                                            <th scope="col">Изменить</th>
+                                            <th scope="col">Удалить</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for post in object_list %}
                                     <tr>
                                         <th scope="row">
                                             <a href="{% url 'detail_post' post.pk%}">{{ post.title }}</a>
@@ -45,12 +45,12 @@
                                     </tr>
                                 {% endfor %}
                             {% else %}
-                                <p>No posts</p>
+                            <p>No posts</p>
                             {% endif %}
                         </tbody>
                     </table>
                 </div>
-            {% endblock %}
+                    {% endblock %}
         </div>
     </body>
     <script
