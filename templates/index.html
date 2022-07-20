@@ -24,6 +24,7 @@
                                             <th scope="col">Название</th>
                                             <th scope="col">Описание</th>
                                             <th scope="col">Создано</th>
+                                            <th scope="col">Изменено</th>
                                             <th scope="col">Изменить</th>
                                             <th scope="col">Удалить</th>
                                     </tr>
@@ -36,6 +37,7 @@
                                         </th>
                                         <td>{{ post.description }}</td>
                                         <td>{{ post.created_at|date:'DATE_FORMAT' }}</td>
+                                        <td>{{ post.updated_at|date:'DATETIME_FORMAT' }}</td>
                                         <td>
                                             <a href="{% url 'update_post' post.pk%}" class="btn btn-primary btn-dark">Изменить</a>
                                         </td>

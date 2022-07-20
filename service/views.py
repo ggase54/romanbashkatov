@@ -4,10 +4,6 @@ from django.views.generic import ListView, DeleteView, CreateView, UpdateView, D
 from .forms import PostForm, CommentForm
 from django.urls import reverse_lazy
 
-def index(req):
-  return render(req, 'index.html')
-
-
 def about(req):
   return render(req, 'about.html')
 
@@ -21,7 +17,7 @@ class DetailPostView(DetailView):
   template_name = 'detail_post.html'
 
 class CreatePostView(CreateView):
-  model = Post 
+  model = Post
   template_name = 'create_post.html'
   form_class = PostForm
 

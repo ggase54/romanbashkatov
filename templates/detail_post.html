@@ -4,9 +4,6 @@
     <h1>Пост: <em>{{ post.title }}</em></h1>
     <p>Описание: {{ post.description }}</p>
     <p>Создано: {{ post.created_at|date:'DATE_FORMAT' }}</p>
-    {% if post.updated_at %}
-    <p>Обновлено: {{ post.updated_at|date:'DATE_FORMAT' }}</p>
-    {% endif %}
     {% if post.image %}
         <hr>
         <img src="{{ post.image.url }}" width="800">
@@ -17,8 +14,8 @@
     <a href="{% url 'add_comment' post.pk%}" class="btn btn-info">Добавить Комментарий</a>
     {% if post.comments.all %}
     <hr>
-    <h2>Комментарии</h2>
-        {% for comment in post.comments.all %}<br>
+    <h2>Комментарии</h2> <hr>
+        {% for comment in post.comments.all %}
             <p>{{comment.description}} - {{comment.created_at|date:'DATETIME_FORMAT'}}</p><hr>
         {% endfor %}
     {% endif %}
