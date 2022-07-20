@@ -37,7 +37,7 @@
                                         <td>{{ post.description }}</td>
                                         <td>{{ post.created_at|date:'DATE_FORMAT' }}</td>
                                         <td>
-                                            <a href="{% url 'update_post' post.pk%}" class="btn btn-primary">Изменить</a>
+                                            <a href="{% url 'update_post' post.pk%}" class="btn btn-primary btn-dark">Изменить</a>
                                         </td>
                                         <td>
                                             <a href="{% url 'delete_post' post.pk%}" class="btn btn-danger">Удалить</a>

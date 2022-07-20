@@ -19,7 +19,7 @@
     <hr>
     <h2>Комментарии</h2>
         {% for comment in post.comments.all %}<br>
-            <p>{{comment.description}} - {{comment.created_at}}</p><hr>
+            <p>{{comment.description}} - {{comment.created_at|date:'DATETIME_FORMAT'}}</p><hr>
         {% endfor %}
     {% endif %}
 {% endblock content %}
