@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Post, Comment
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DetailView
-from .forms import PostForm, CommentForm
+from .forms import PostForm, CommentForm, UserRegisterForm
 from django.urls import reverse_lazy
 
 def about(req):
@@ -11,6 +11,11 @@ class PostsView(ListView):
   model = Post
   template_name = 'index.html'
   ordering = ['created_at']
+
+class RegisterForm(CreateView):
+  form_class = UserRegisterForm
+  template_name = 'register.html'
+  success_url = reverse_lazy('login')
 
 class DetailPostView(DetailView):
   model = Post

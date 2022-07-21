@@ -5,11 +5,10 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
+        <div class="navbar-nav">
                 <a class="nav-link" href="{% url 'about' %}">О нас</a>
-            </li>
-            </li>
-        </ul>
-    </div>
+                <a class="nav-link" href="{% url 'login' %}">Log in</a>
+                <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+        </div>
 </nav>
