@@ -1,14 +1,28 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="{% url 'index' %}">FORUM</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="navbar-nav">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}">FORUM</a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav">
                 <a class="nav-link" href="{% url 'about' %}">О нас</a>
-                <a class="nav-link" href="{% url 'login' %}">Log in</a>
-                <a class="nav-link" href="{% url 'logout' %}">Log out</a>
-                <a class="nav-link" href="{% url 'register' %}">Register</a>
+            </div>
         </div>
+        <div class="navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+                <a class="nav-link" href="{% url 'logout' %}">Log out</a>
+            {% else %}
+                <a class="nav-link" href="{% url 'login' %}">Log in</a>
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+            {% endif %}
+        </div>
+    </div>
 </nav>
