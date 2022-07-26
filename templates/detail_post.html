@@ -1,12 +1,12 @@
 {% extends "index.html" %}
 
 {% block content %}
-    <h1>Пост:
+    <h1>Post:
         <em>{{ post.title }}</em>
     </h1>
-    <p>Описание:
+    <p>Description:
         {{ post.description }}</p>
-    <p>Создано:
+    <p>Created_at:
         {{ post.created_at|date:'DATE_FORMAT' }}</p>
     {% if post.image %}
         <hr>
@@ -14,9 +14,9 @@
     {% endif %}
     {% if user.is_authenticated %}
         <hr>
-        <a href="{% url 'update_post' post.pk%}" class="btn btn-primary">Изменить</a>
-        <a href="{% url 'delete_post' post.pk%}" class="btn btn-danger">Удалить</a>
-        <a href="{% url 'add_comment' post.pk%}" class="btn btn-info">Добавить Комментарий</a>
+        <a href="{% url 'update_post' post.pk%}" class="btn btn-primary">Update</a>
+        <a href="{% url 'delete_post' post.pk%}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'add_comment' post.pk%}" class="btn btn-info">Add comment</a>
     {% endif %}
     {% if post.comments.all %}
         <hr>

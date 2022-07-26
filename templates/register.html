@@ -2,12 +2,12 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <h1>Регистрация</h1>
+    <h1>Register Page</h1>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
         <br>
-        <button class="btn btn-outline-primary">Зарегистрироваться</button>
+        <button class="btn btn-outline-primary">Register</button>
     </form>
     <hr>
     <small class="text-nuted">
