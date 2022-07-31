@@ -12,12 +12,12 @@
         <hr>
         <img src="{{ post.image.url }}" width="800">
     {% endif %}
-        <hr>
-        {% if user.is_superuser or user.is_staff %}
+    <hr>
+    {% if user.is_superuser or user.is_staff %}
         <a href="{% url 'update_post' post.pk%}" class="btn btn-primary">Update</a>
         <a href="{% url 'delete_post' post.pk%}" class="btn btn-danger">Delete</a>
-        {% endif %}
-        <a href="{% url 'add_comment' post.pk%}" class="btn btn-info">Add comment</a>
+    {% endif %}
+    <a href="{% url 'add_comment' post.pk%}" class="btn btn-info">Add comment</a>
     {% if post.comments.all %}
         <hr>
         <h2>Комментарии</h2>
