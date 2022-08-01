@@ -15,6 +15,19 @@
         <div class="container">
             {% block content %}
                 <h1>Forum</h1>
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ message }}
+                            </div>
+                        {% else %}
+                            <div class="alert alert-success" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
                 <div class="card card-block">
                     {% if user.is_superuser or user.is_staff %}
                         <a href="{% url 'create_post' %}" class="btn btn-primary btn-sm btn-block">Create NEW post</a>
@@ -23,30 +36,30 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Created at</th>
-                                    <th scope="col">Updated at</th>
+                                    <th class="table-primary" scope="col">Title</th>
+                                    <th class="table-primary" scope="col">Description</th>
+                                    <th class="table-primary" scope="col">Created at</th>
+                                    <th class="table-primary" scope="col">Updated at</th>
                                     {% if user.is_superuser or user.is_staff %}
-                                        <th scope="col">Update</th>
-                                        <th scope="col">Delete</th>
+                                        <th class="table-primary" scope="col">Update</th>
+                                        <th class="table-primary" scope="col">Delete</th>
                                     {% endif %}
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for post in object_list %}
                                     <tr>
-                                        <th scope="row">
+                                        <th class="table-info" scope="row">
                                             <a href="{% url 'detail_post' post.pk%}">{{ post.title }}</a>
                                         </th>
-                                        <td>{{ post.description }}</td>
-                                        <td>{{ post.created_at|date:'DATE_FORMAT' }}</td>
-                                        <td>{{ post.updated_at|date:'DATETIME_FORMAT' }}</td>
+                                        <td class="table-info">{{ post.description }}</td>
+                                        <td class="table-info">{{ post.created_at|date:'DATE_FORMAT' }}</td>
+                                        <td class="table-info">{{ post.updated_at|date:'DATETIME_FORMAT' }}</td>
                                         {% if user.is_superuser or user.is_staff %}
-                                            <td>
+                                            <td class="table-info">
                                                 <a href="{% url 'update_post' post.pk%}" class="btn btn-primary btn-dark">Update</a>
                                             </td>
-                                            <td>
+                                            <td class="table-info">
                                                 <a href="{% url 'delete_post' post.pk%}" class="btn btn-danger">Delete</a>
                                             </td>
                                         {% endif %}

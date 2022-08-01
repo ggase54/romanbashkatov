@@ -3,6 +3,13 @@
 
 {% block content %}
     <h1>Log in</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
