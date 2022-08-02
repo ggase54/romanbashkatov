@@ -69,14 +69,13 @@ WSGI_APPLICATION = 'forum_pr.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'forums',
+        'NAME': 'forum',
         'USER': 'postgres',
         'PASSWORD': '123123',
         'PORT': '5432',
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -130,3 +129,10 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.google.com'
+EMAIL_HOST_USER = 'testggase@gmail.com'
+EMAIL_HOST_PASSWORD = 'uxgcbmhfesqbmhnq'
+EMAIL_PORT = 587
+EMAIL_USE_TSL = True

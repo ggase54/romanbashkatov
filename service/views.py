@@ -1,15 +1,28 @@
+# from django.conf import settings
 from django.shortcuts import redirect, render
 from .models import Post, Comment
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DetailView
-from .forms import PostForm, CommentForm, UserRegisterForm
+from .forms import MessageForm, PostForm, CommentForm, UserRegisterForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.decorators import login_required, permission_required
+from django.core.mail import send_mail
 
 def about(req):
-  return render(req, 'about.html')
+  form = MessageForm()
+  if req.method == "POST":
+    form = MessageForm(req.POST)
+    if form.is_valid():
+      subject = form.cleaned_data.get("title")
+      body = form.cleaned_data.get("body")
+      send_mail(
+      subject, body, 'testggase@gmail.com', ['piydujeknu@vusra.com']
+      )
+      form.save()
+      return redirect('index')
+  return render(req, 'about.html', {'form': form})
 
 class PostsView(ListView):
   model = Post
@@ -44,7 +57,8 @@ def create_post(req):
       if title != "POST":
         messages.error(req, f"Something went wrong.")
         return redirect('index')
-      messages.success(req, f"{title} was created successfully!")
+      else:
+        messages.success(req, f"{title} was created successfully!")
       return redirect('index')
   return render(req, 'create_post.html', {'form': form})
 
