@@ -130,7 +130,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.google.com'
 EMAIL_HOST_USER = 'testggase@gmail.com'
 EMAIL_HOST_PASSWORD = 'uxgcbmhfesqbmhnq'

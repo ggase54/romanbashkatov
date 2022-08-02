@@ -18,7 +18,7 @@ def about(req):
       subject = form.cleaned_data.get("title")
       body = form.cleaned_data.get("body")
       send_mail(
-      subject, body, 'testggase@gmail.com', ['piydujeknu@vusra.com']
+      subject, body, 'testggase@gmail.com', ['piydujeknu@vusra.com'], fail_silently=False
       )
       form.save()
       return redirect('index')
