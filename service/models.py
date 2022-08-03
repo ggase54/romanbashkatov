@@ -29,6 +29,7 @@ class Comment(models.Model):
 class Message(models.Model):
   title = models.CharField(verbose_name="Subject", max_length=250, null=True, blank=True)
   body = models.TextField(verbose_name="Message")
+  email = models.EmailField(verbose_name="Email", max_length=50)
 
   def __str__(self):
     return f'{self.title}'

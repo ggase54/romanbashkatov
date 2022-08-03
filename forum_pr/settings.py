@@ -130,9 +130,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'smtp.google.com'
-EMAIL_HOST_USER = 'testggase@gmail.com'
-EMAIL_HOST_PASSWORD = 'uxgcbmhfesqbmhnq'
+EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 587
-EMAIL_USE_TSL = True
+EMAIL_HOST_USER = 'testggase@yandex.com'
+EMAIL_HOST_PASSWORD = 'Default246505'
+DEFAULT_FROM_EMAIL = 'testggase@yandex.com'
+EMAIL_USE_TLS = True

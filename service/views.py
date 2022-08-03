@@ -17,10 +17,10 @@ def about(req):
     if form.is_valid():
       subject = form.cleaned_data.get("title")
       body = form.cleaned_data.get("body")
+      email = form.cleaned_data.get("email")
       send_mail(
-      subject, body, 'testggase@gmail.com', ['piydujeknu@vusra.com'], fail_silently=False
-      )
-      form.save()
+      subject, body, 'testggase@yandex.com', [email], fail_silently=False
+        )
       return redirect('index')
   return render(req, 'about.html', {'form': form})
 
@@ -54,7 +54,7 @@ def create_post(req):
     if form.is_valid():
       form.save()
       title = form.cleaned_data.get("title")
-      if title != "POST":
+      if title == 'post' or title == 'POST' or title == 'Post':
         messages.error(req, f"Something went wrong.")
         return redirect('index')
       else:
