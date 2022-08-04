@@ -1,3 +1,4 @@
+from re import T
 from django.db import models
 from django.urls import reverse
 
@@ -29,7 +30,8 @@ class Comment(models.Model):
 class Message(models.Model):
   title = models.CharField(verbose_name="Subject", max_length=250, null=True, blank=True)
   body = models.TextField(verbose_name="Message")
-  email = models.EmailField(verbose_name="Email", max_length=50)
+  email1 = models.EmailField(verbose_name="Email", max_length=50)
+  email2 = models.EmailField(verbose_name="Email_2", max_length=50, null=True, blank=True)
 
   def __str__(self):
     return f'{self.title}'

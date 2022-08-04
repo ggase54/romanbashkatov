@@ -1,4 +1,3 @@
-# from django.conf import settings
 from django.shortcuts import redirect, render
 from .models import Post, Comment
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DetailView
@@ -17,9 +16,10 @@ def about(req):
     if form.is_valid():
       subject = form.cleaned_data.get("title")
       body = form.cleaned_data.get("body")
-      email = form.cleaned_data.get("email")
+      email = form.cleaned_data.get("email1")
+      email_2 = form.cleaned_data.get("email2")
       send_mail(
-      subject, body, 'testggase@yandex.com', [email], fail_silently=False
+      subject, body, 'testggase@yandex.com', [email, email_2], fail_silently=False
         )
       return redirect('index')
   return render(req, 'about.html', {'form': form})
@@ -38,12 +38,6 @@ class RegisterForm(SuccessMessageMixin, CreateView):
 class DetailPostView(DetailView):
   model = Post
   template_name = 'detail_post.html'
-
-# class CreatePostView(PermissionRequiredMixin, CreateView):
-#   permission_required = 'service.add_post'
-#   model = Post
-#   template_name = 'create_post.html'
-#   form_class = PostForm
 
 @login_required
 @permission_required('service.add_post')
@@ -76,7 +70,7 @@ class DeletePostView(PermissionRequiredMixin, DeleteView):
   success_url = reverse_lazy('index')
 
 class AddCommentView(LoginRequiredMixin, CreateView):
-  model = Comment 
+  model = Comment
   template_name = 'add_comment.html'
   form_class = CommentForm
 
