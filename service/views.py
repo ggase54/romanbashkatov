@@ -9,6 +9,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.decorators import login_required, permission_required
 from django.core.mail import send_mail
 
+@login_required
 def about(req):
   form = MessageForm()
   if req.method == "POST":
@@ -27,7 +28,7 @@ def about(req):
 class PostsView(ListView):
   model = Post
   template_name = 'index.html'
-  ordering = ['created_at']
+  ordering = ['-updated_at']
 
 class RegisterForm(SuccessMessageMixin, CreateView):
   form_class = UserRegisterForm

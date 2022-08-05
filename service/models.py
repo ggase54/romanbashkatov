@@ -1,10 +1,20 @@
-from re import T
 from django.db import models
 from django.urls import reverse
+from django.core import validators
 
 class Post(models.Model):
 
-  title = models.CharField(verbose_name="Title", max_length=100)
+  class Meta:
+    verbose_name = "Post"
+    verbose_name_plural = "Posts"
+    ordering = ['-created_at']
+    unique_together = ('title', 'description')
+
+  title = models.CharField(verbose_name="Title", 
+  max_length=100,
+  null=False,
+  validators=[validators.RegexValidator(regex='^.*post$', message='Invalid title')]
+  )
   description = models.TextField(verbose_name="Description of post", null=True, blank=True)
   image = models.ImageField(verbose_name="Image", null=True, blank=True)
   created_at = models.DateTimeField(verbose_name="Created at", auto_now_add=True)

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Forum</title>
+        <title>FORUM</title>
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -65,12 +65,12 @@
                                         {% endif %}
                                     </tr>
                                 {% endfor %}
-                            {% else %}
-                                <small>No posts</small>
-                            {% endif %}
-                        </tbody>
-                    </table>
-                {% endblock %}
+                            </tbody>
+                        </table>
+                        {% else %}
+                            <strong>No posts</strong>
+                        {% endif %}
+                        {% endblock %}
             </div>
         </body>
         <script
