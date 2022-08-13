@@ -22,13 +22,14 @@ def about(req):
       send_mail(
       subject, body, 'testggase@yandex.com', [email, email_2], fail_silently=False
         )
+      form.save()
       return redirect('index')
   return render(req, 'about.html', {'form': form})
 
 class PostsView(ListView):
   model = Post
   template_name = 'index.html'
-  ordering = ['-updated_at']
+  ordering = ['-created_at']
 
 class RegisterForm(SuccessMessageMixin, CreateView):
   form_class = UserRegisterForm
@@ -54,7 +55,7 @@ def create_post(req):
         return redirect('index')
       else:
         messages.success(req, f"{title} was created successfully!")
-      return redirect('index')
+      return redirect('..')
   return render(req, 'create_post.html', {'form': form})
 
 
@@ -66,7 +67,7 @@ class UpdatePostView(PermissionRequiredMixin, UpdateView):
 
 class DeletePostView(PermissionRequiredMixin, DeleteView):
   permission_required = 'service.delete_post'
-  model = Post 
+  model = Post
   template_name = 'delete_post.html'
   success_url = reverse_lazy('index')
 

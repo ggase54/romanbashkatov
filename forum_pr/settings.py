@@ -20,6 +20,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_interface',
+    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -69,9 +71,9 @@ WSGI_APPLICATION = 'forum_pr.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'forum',
-        'USER': 'postgres',
-        'PASSWORD': '123123',
+        'NAME': 'forums',
+        'USER': 'roman',
+        'PASSWORD': '123456',
         'PORT': '5432',
         'HOST': 'localhost',
     }
@@ -136,3 +138,6 @@ EMAIL_HOST_USER = 'testggase@yandex.com'
 EMAIL_HOST_PASSWORD = 'Default246505'
 DEFAULT_FROM_EMAIL = 'testggase@yandex.com'
 EMAIL_USE_TLS = True
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
+SILENCED_SYSTEM_CHECKS = ["security.W019"]
