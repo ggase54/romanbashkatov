@@ -1,12 +1,16 @@
 {% extends 'index.html' %}
 {% load crispy_forms_tags %}
 
+{% block button %}
+    <button type="button" class="btn-close" aria-label="Close"></button>
+{% endblock %}
 {% block content %}
     <h1>About</h1>
     <p>{{ user.username }}</p>
     <form method="post">{% csrf_token %}
-        {{ form|crispy }} <br>
-        <button class="btn btn-outline-primary">
+        {{ form|crispy }}
+        <br>
+        <button class="btn btn-success">
             send
         </button>
     </form>
