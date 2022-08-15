@@ -59,7 +59,7 @@
                                         <td class="table-info">{{ post.updated_at|date:'DATETIME_FORMAT' }}</td>
                                         {% if user.is_superuser or user.is_staff %}
                                             <td class="table-info">
-                                                <a href="{% url 'update_post' post.pk%}" class="btn btn-primary btn-dark">Update</a>
+                                                <a href="{% url 'update_post' post.pk%}" class="btn btn-primary">Update</a>
                                             </td>
                                             <td class="table-info">
                                                 <a href="{% url 'delete_post' post.pk%}" class="btn btn-danger">Delete</a>

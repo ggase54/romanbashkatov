@@ -136,7 +136,7 @@ EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'testggase@yandex.com'
 EMAIL_HOST_PASSWORD = 'Default246505'
-DEFAULT_FROM_EMAIL = 'testggase@yandex.com'
+# DEFAULT_FROM_EMAIL = 'testggase@yandex.com'
 EMAIL_USE_TLS = True
 
 X_FRAME_OPTIONS = "SAMEORIGIN"

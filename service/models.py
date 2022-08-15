@@ -13,8 +13,7 @@ class Post(models.Model):
   title = models.CharField(verbose_name="Title", 
   max_length=100,
   null=False,
-  validators=[validators.RegexValidator(regex='^.*post$', message='Invalid title')]
-  )
+  validators=[validators.RegexValidator(regex='^.*post$', message='Invalid title')])
   description = models.TextField(verbose_name="Description of post", null=True, blank=True)
   image = models.ImageField(verbose_name="Image", null=True, blank=True)
   created_at = models.DateTimeField(verbose_name="Created at", auto_now_add=True)
@@ -45,6 +44,3 @@ class Message(models.Model):
 
   def __str__(self):
     return f'{self.title}'
-
-  # def get_absolute_url(self):
-  #   return reverse('index')

@@ -53,14 +53,14 @@ def create_post(req):
   if req.method == 'POST':
     form = PostForm(req.POST)
     if form.is_valid():
-      form.save()
-      title = form.cleaned_data.get("title")
-      if title == 'post' or title == 'POST' or title == 'Post':
-        messages.error(req, f"Something went wrong.")
-        return redirect('index')
-      else:
-        messages.success(req, f"{title} was created successfully!")
-      return redirect('..')
+        form.save()
+        title = form.cleaned_data.get("title")
+        if title == 'post' or title == 'POST' or title == 'Post':
+          messages.error(req, f"Something went wrong.")
+          return redirect('index')
+        else:
+          messages.success(req, f"{title} was created successfully!")
+          return redirect('..')
   return render(req, 'create_post.html', {'form': form})
 
 
