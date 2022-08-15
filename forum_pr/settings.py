@@ -73,7 +73,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'forums',
         'USER': 'roman',
-        'PASSWORD': '123456',
+        'PASSWORD': 'ggase',
         'PORT': '5432',
         'HOST': 'localhost',
     }
