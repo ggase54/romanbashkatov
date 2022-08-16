@@ -46,23 +46,13 @@ class DetailPostView(DetailView):
   model = Post
   template_name = 'detail_post.html'
 
-@login_required
-@permission_required('service.add_post')
-def create_post(req):
-  form = PostForm()
-  if req.method == 'POST':
-    form = PostForm(req.POST)
-    if form.is_valid():
-        form.save()
-        title = form.cleaned_data.get("title")
-        if title == 'post' or title == 'POST' or title == 'Post':
-          messages.error(req, f"Something went wrong.")
-          return redirect('index')
-        else:
-          messages.success(req, f"{title} was created successfully!")
-          return redirect('..')
-  return render(req, 'create_post.html', {'form': form})
-
+class CreatePostView(SuccessMessageMixin, PermissionRequiredMixin, CreateView):
+  form_class = PostForm
+  success_message = "%(title)s was created successfully!"
+  template_name = 'create_post.html'
+  model = Post
+  permission_required = 'service.create_post'
+  success_url = reverse_lazy('index')
 
 class UpdatePostView(PermissionRequiredMixin, UpdateView):
   permission_required = 'service.update_post'

@@ -10,10 +10,7 @@ class Post(models.Model):
     ordering = ['-created_at']
     unique_together = ('title', 'description')
 
-  title = models.CharField(verbose_name="Title", 
-  max_length=100,
-  null=False,
-  validators=[validators.RegexValidator(regex='^.*post$', message='Invalid title')])
+  title = models.CharField(verbose_name="Title", max_length=100, null=False)
   description = models.TextField(verbose_name="Description of post", null=True, blank=True)
   image = models.ImageField(verbose_name="Image", null=True, blank=True)
   created_at = models.DateTimeField(verbose_name="Created at", auto_now_add=True)
