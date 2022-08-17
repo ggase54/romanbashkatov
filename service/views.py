@@ -27,7 +27,6 @@ def about(req):
             send_mail(
             subject, body, 'testggase@yandex.com', [email, email_2], fail_silently=False
                 )
-            form.save()
             return redirect('index')
     return render(req, 'about.html', {'form': form})
 
