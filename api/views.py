@@ -19,6 +19,7 @@ def checkbox_detail(req, pk):
     return Response({'error': f"Checkbox with id={pk} don't find"}, status = status.HTTP_404_NOT_FOUND)
   return Response(serializer.data)
 
+@api_view(['POST'])
 def checkbox_create(req):
   serializer = CheckboxSerializer(data=req.data)
   if serializer.is_valid():
