@@ -1,6 +1,6 @@
 from api.models import Checkbox
 from api.serializers import CheckboxSerializer, DataSerializer
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, action
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
@@ -11,8 +11,13 @@ from rest_framework import viewsets
 
 
 class CheckboxViewSet(viewsets.ModelViewSet):
-  queryset = Checkbox.objects.all()
-  serializer_class = CheckboxSerializer
+    queryset = Checkbox.objects.all()
+    serializer_class = CheckboxSerializer
+
+    @action(detail=False, methods=["get"])
+    def limit(self, request, pk=None):
+        params = request.query_params
+        return Response({"result": params})
 
 
 class UserList(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin):
