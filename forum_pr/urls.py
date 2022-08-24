@@ -19,7 +19,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path("", include("service.urls2")),
     path('api/', include("api.urls2")),
-    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+   #  re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     re_path('swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('roman/', admin.site.urls),
 ]

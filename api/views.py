@@ -1,3 +1,6 @@
+import logging
+
+
 from api.models import Checkbox
 from api.serializers import CheckboxSerializer, DataSerializer
 from rest_framework.decorators import api_view, action
@@ -10,6 +13,9 @@ from .utils import Sum
 from rest_framework import viewsets
 
 
+logger = logging.getLogger('django')
+
+
 class CheckboxViewSet(viewsets.ModelViewSet):
     queryset = Checkbox.objects.all()
     serializer_class = CheckboxSerializer
@@ -17,6 +23,10 @@ class CheckboxViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=["get"])
     def limit(self, request, pk=None):
         params = request.query_params
+        try:
+            logger.info(f'Params: {params}')
+        except Exception as error:
+            logger.error(f'Error: {error}')
         return Response({"result": params})
 
 
