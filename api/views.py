@@ -13,7 +13,7 @@ from .utils import Sum
 from rest_framework import viewsets
 
 
-logger = logging.getLogger('django')
+logger = logging.getLogger("django")
 
 
 class CheckboxViewSet(viewsets.ModelViewSet):
@@ -24,13 +24,14 @@ class CheckboxViewSet(viewsets.ModelViewSet):
     def limit(self, request, pk=None):
         params = request.query_params
         try:
-            logger.info(f'Params: {params}')
+            logger.info(f"Params: {params}")
         except Exception as error:
-            logger.error(f'Error: {error}')
+            logger.error(f"Error: {error}")
         return Response({"result": params})
 
 
-class UserList(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin):
+class UserList(generics.GenericAPIView, mixins.ListModelMixin, 
+mixins.CreateModelMixin):
     queryset = Checkbox.objects.all()
     serializer_class = CheckboxSerializer
 

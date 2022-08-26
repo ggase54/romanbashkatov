@@ -1,4 +1,3 @@
-
 class Sum:
     def __init__(self, params):
         self.val_1 = params.get("val_1")
