@@ -4,6 +4,19 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# LOGGING
+LOG_DIR = os.path.join(BASE_DIR, 'log')
+LOG_FILE = '/api.log'
+LOG_PATH = LOG_DIR + LOG_FILE
+
+if not os.path.exists(LOG_DIR):
+    os.mkdir(LOG_DIR)
+
+if not os.path.exists(LOG_PATH):
+    f = open(LOG_PATH, 'a').close() #create empty log file
+else:
+    f = open(LOG_PATH,"w").close() #clear log file
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -74,9 +87,9 @@ WSGI_APPLICATION = 'forum_pr.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'forum',
-        'USER': 'roman',
-        'PASSWORD': 'ggase',
+        'NAME': 'django',
+        'USER': 'django_admin',
+        'PASSWORD': 'roman',
         'PORT': '5432',
         'HOST': 'localhost',
     }
@@ -182,7 +195,7 @@ LOGGING = {
         },
         'file': {
             'class': 'logging.FileHandler',
-            'filename': BASE_DIR / 'logs/forum_api.log',
+            'filename': LOG_PATH,
             'level': 'INFO',
             'formatter': 'simple',
         },
